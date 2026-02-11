@@ -73,32 +73,43 @@ footer {
     <a href="#historia">Historia</a>
     <a href="#Palmarés">Palmarés</a>
     <a href="#aficion">Afición</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#contacto">contacto</a>
 </nav>
 
-<section id="historia">
-    <h2>Historia</h2>
+<section id="Principio">
+    <h2>Nacimiento</h2>
     <p>
 Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
-Es uno de los mejores futbolistas de todos los tiempos.
+Es uno de los mejores futbolistas de todos los tiempos y el máximo goleador de la historia del deporte rey.
     </p>
 </section>
 
 <!-- IMAGEN LOCAL -->
 <section>
-    <h2>Cristiano Ronaldo 2008</h2>
+    <h2>Cristiano Ronaldo 2O18 (después de ganar su última final de champions frente al Liverpool en Kyev)</h2>
     <img src="cr7_2008.jpg" 
          alt="Cristiano Ronaldo 2008"
          style="width:100%; max-width:300px; display:block; margin:auto; border-radius:10px;">
 </section>
 
 <section id="Palmarés">
-    <h2>Estadio: El Molinón - Enrique Castro "Quini"</h2>
+    <h2>PALMARÉS</h2>
     <p>
-5 Champions League  
-7 Ligas  
-5 Balones de Oro  
-Máximo goleador histórico de la Champions  
+Títulos colectivos:
+5 Champions League
+7 Ligas (Inglaterra, España, Italia)
+4 Mundiales de Clubes
+3 Premier League
+2 Ligas españolas
+2 Serie A
+1 Eurocopa (2016)
+1 Nations League (2019)
+Premios individuales:
+5 Balones de Oro
+4 Botas de Oro
+3 The Best FIFA
+Máximo goleador histórico de la Champions
+Máximo goleador histórico de selecciones
     </p>
 </section>
 
@@ -121,8 +132,8 @@ Es una de las personas más reconocidas del mundo y la más seguida en Instagram
 
 <section id="contacto">
     <h2>Contacto</h2>
-    <p>Puedes visitarlo web oficial del club para más información: 
-       <strong>www.realsporting.com</strong></p>
+    <p>Puedes encontrar más información del G-O-A-T es esta web 
+       <strong>https://es.wikipedia.org/wiki/Cristiano_Ronaldo</strong></p>
 </section>
 
 <!-- CHATBOT REAL -->
@@ -139,11 +150,10 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 
 <footer>
-    © 2026 - Web dedicada al Real Sporting de Gijón
+    © 2026 - Web dedicada a CR7
 </footer>
-
 <script>
-// AHORCADO
+// AHORCADO MEJORADO
 const palabras = [
     "cristiano",
     "ronaldo",
@@ -159,6 +169,7 @@ const palabras = [
 let palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
 let letrasAdivinadas = [];
 let letrasUsadas = [];
+let intentos = 6; // vidas
 
 function mostrarPalabra() {
     let texto = "";
@@ -170,13 +181,18 @@ function mostrarPalabra() {
         }
     }
     document.getElementById("palabra").textContent = texto;
+    document.getElementById("estado").textContent = "Intentos restantes: " + intentos;
 }
 
 function probarLetra() {
+    if (intentos <= 0) return;
+
     let input = document.getElementById("letra");
     let letra = input.value.toLowerCase();
     input.value = "";
 
+    // Validación
+    if (!letra || letra.length !== 1 || !letra.match(/[a-zñ]/i)) return;
     if (letrasUsadas.includes(letra)) return;
 
     letrasUsadas.push(letra);
@@ -184,13 +200,23 @@ function probarLetra() {
 
     if (palabraSecreta.includes(letra)) {
         letrasAdivinadas.push(letra);
+    } else {
+        intentos--;
     }
 
     mostrarPalabra();
 
+    // GANAR
     if (!document.getElementById("palabra").textContent.includes("_")) {
         document.getElementById("estado").textContent =
             "¡HAS GANADO! La palabra era: " + palabraSecreta.toUpperCase();
+        intentos = 0;
+    }
+
+    // PERDER
+    if (intentos === 0 && document.getElementById("palabra").textContent.includes("_")) {
+        document.getElementById("estado").textContent =
+            "HAS PERDIDO 😢 La palabra era: " + palabraSecreta.toUpperCase();
     }
 }
 
@@ -199,3 +225,4 @@ mostrarPalabra();
 
 </body>
 </html>
+
