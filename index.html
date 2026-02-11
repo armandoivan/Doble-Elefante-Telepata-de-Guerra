@@ -4,38 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CR7</title>
-
+    <meta name="description" content="Web dedicada a Cristiano Ronaldo">
+    
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f2f2f2;
-            color: #222;
+            background: #f4f4f4;
         }
 
         header {
-            background: #c8102e; /* Rojo Portugal */
+            background: #c8102e;
             color: white;
             padding: 30px;
             text-align: center;
-        }
-
-        nav {
-            background: #006600; /* Verde Portugal */
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #c8102e;
         }
 
         section {
@@ -47,24 +30,17 @@
             border-left: 10px solid #006600;
         }
 
-        h2 {
-            color: #c8102e;
-        }
-
         footer {
             text-align: center;
             padding: 15px;
             background: #006600;
-            color: white;
+            color: #eee;
             margin-top: 40px;
         }
 
-        #chat {
-            border:1px solid #ccc;
-            padding:10px;
-            height:200px;
-            overflow:auto;
-            margin-bottom:10px;
+        #palabra {
+            font-size: 30px;
+            letter-spacing: 10px;
         }
     </style>
 </head>
@@ -72,89 +48,96 @@
 <body>
 
 <header>
-    <h1>CRISTIANO RONALDO</h1>
-    <p>Máximo goleador de la historia del fútbol</p>
+    <h1>Cristiano Ronaldo</h1>
+    <p>El mejor jugador de la historia</p>
 </header>
 
-<nav>
-    <a href="#historia">Historia</a>
-    <a href="#imagen">Imagen</a>
-    <a href="#juego">Juego</a>
-    <a href="#chatbot">Chatbot</a>
-</nav>
+<section>
+    <h2>Cristiano Ronaldo 2008</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2008.jpg"
+         alt="Cristiano Ronaldo 2008"
+         style="max-width:300px; display:block; margin:auto; border-radius:10px;">
+</section>
 
-<section id="historia">
+<section>
     <h2>Historia</h2>
     <p>
-        Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
-        Es uno de los mejores futbolistas de todos los tiempos.
+        Cristiano Ronaldo dos Santos Aveiro nació en 1985 en Madeira.
+        Ha ganado 5 Balones de Oro y es el máximo goleador de la historia.
     </p>
 </section>
 
-<section id="imagen">
-    <h2>Cristiano Ronaldo 2008</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2008.jpg" 
-         alt="Cristiano Ronaldo 2008"
-         style="width:100%; max-width:300px; display:block; margin:auto; border-radius:10px;">
-</section>
-
-<section id="juego">
-    <h2>Juego: Adivina el número</h2>
-    <p>Cristiano piensa un número del 1 al 10</p>
-    <input type="number" id="numero" min="1" max="10">
-    <button onclick="jugar()">Probar</button>
-    <p id="resultado"></p>
-</section>
-
-<section id="chatbot">
-    <h2>Chat con CristianoBot</h2>
-    <div id="chat"></div>
-    <input type="text" id="mensaje" placeholder="Escribe algo...">
-    <button onclick="responder()">Enviar</button>
+<section>
+    <h2>Juego: El Ahorcado CR7</h2>
+    <p id="palabra"></p>
+    <input type="text" id="letra" maxlength="1">
+    <button onclick="probarLetra()">Probar letra</button>
+    <p id="intentos"></p>
+    <p id="mensajeJuego"></p>
 </section>
 
 <footer>
     © 2026 - Web dedicada a Cristiano Ronaldo
 </footer>
 
+<!-- TAWK (EDITAR DESDE SU PANEL) -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/697b5d462893b51c32bbdaa7/1jg4u8nkl';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
 <script>
-    // Juego
-    let secreto = Math.floor(Math.random() * 10) + 1;
+/* ===== JUEGO AHORCADO ===== */
+let palabraSecreta = "RONALDO";
+let letrasAdivinadas = [];
+let intentos = 6;
 
-    function jugar() {
-        let n = document.getElementById("numero").value;
-        let res = document.getElementById("resultado");
-
-        if (n == secreto) {
-            res.textContent = "¡GOOOOL! Has acertado como CR7 🐐";
+function mostrarPalabra() {
+    let display = "";
+    for (let letra of palabraSecreta) {
+        if (letrasAdivinadas.includes(letra)) {
+            display += letra + " ";
         } else {
-            res.textContent = "Fallaste... el número era " + secreto;
+            display += "_ ";
         }
     }
+    document.getElementById("palabra").textContent = display;
+}
 
-    // Chatbot
-    function responder() {
-        let input = document.getElementById("mensaje");
-        let chat = document.getElementById("chat");
-        let texto = input.value.toLowerCase();
+function probarLetra() {
+    let letra = document.getElementById("letra").value.toUpperCase();
+    document.getElementById("letra").value = "";
 
-        chat.innerHTML += "<p><strong>Tú:</strong> " + input.value + "</p>";
-
-        let respuesta = "Soy el mejor jugador del mundo 😎";
-
-        if (texto.includes("hola")) respuesta = "Hola, soy Cristiano Ronaldo.";
-        if (texto.includes("balon")) respuesta = "He ganado 5 Balones de Oro.";
-        if (texto.includes("edad")) respuesta = "Nací en 1985.";
-        if (texto.includes("siu")) respuesta = "¡¡SIIIIUUUU!!";
-        if (texto.includes("champions")) respuesta = "He ganado 5 Champions League.";
-
-        chat.innerHTML += "<p><strong>CristianoBot:</strong> " + respuesta + "</p>";
-        input.value = "";
-        chat.scrollTop = chat.scrollHeight;
+    if (!palabraSecreta.includes(letra)) {
+        intentos--;
+    } else if (!letrasAdivinadas.includes(letra)) {
+        letrasAdivinadas.push(letra);
     }
+
+    document.getElementById("intentos").textContent = "Intentos: " + intentos;
+
+    if (intentos <= 0) {
+        document.getElementById("mensajeJuego").textContent = "Has perdido 😢 La palabra era RONALDO";
+    } else if (!document.getElementById("palabra").textContent.includes("_")) {
+        document.getElementById("mensajeJuego").textContent = "¡Has ganado! SIIUU 🐐";
+    }
+
+    mostrarPalabra();
+}
+
+mostrarPalabra();
 </script>
 
 </body>
 </html>
+
+
 
 
