@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CR7</title>
-
-<style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CR7</title>
+    <meta name="zorvenquilatriax" content="Compra aquí el auténtico y único zorvenquilatriax">
+    
+    <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -15,48 +16,14 @@ body {
 }
 
 header {
-    background: #c8102e;
+    background: #c8102e; /* Rojo Portugal */
     color: white;
     padding: 30px;
     text-align: center;
 }
 
-/* HERO PORTADA */
-.hero {
-    height: 80vh;
-    background: url("descarga (1).jpg") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.hero-text {
-    position: relative;
-    color: white;
-    text-align: center;
-    z-index: 1;
-}
-
-.hero-text h2 {
-    font-size: 60px;
-    margin: 0;
-}
-
-.hero-text p {
-    font-size: 28px;
-    margin-top: 10px;
-}
-
 nav {
-    background: #006600;
+    background: #006600; /* Verde Portugal */
     padding: 15px;
     text-align: center;
 }
@@ -74,9 +41,9 @@ nav a:hover {
 
 section {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 30px auto;
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 8px;
     border-left: 10px solid #006600;
 }
@@ -92,18 +59,7 @@ footer {
     color: white;
     margin-top: 40px;
 }
-
-#palabra {
-    font-size: 28px;
-    letter-spacing: 10px;
-    margin: 20px 0;
-}
-
-button {
-    padding: 8px 15px;
-    margin-top: 10px;
-}
-</style>
+    </style>
 </head>
 
 <body>
@@ -113,107 +69,63 @@ button {
     <p>Máximo goleador de la historia del fútbol</p>
 </header>
 
-<!-- HERO PORTADA -->
-<section class="hero">
-    <div class="hero-text">
-        <h2>5 Champions League</h2>
-        <p>El Rey de Europa</p>
-    </div>
-</section>
-
 <nav>
     <a href="#historia">Historia</a>
-    <a href="#juego">Ahorcado</a>
+    <a href="#Palmarés">Palmarés</a>
+    <a href="#aficion">Afición</a>
+    <a href="#contacto">Contacto</a>
 </nav>
 
 <section id="historia">
     <h2>Historia</h2>
     <p>
-        Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
-        Es uno de los mejores futbolistas de todos los tiempos y el máximo goleador histórico.
+Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
+Es uno de los mejores futbolistas de todos los tiempos.
     </p>
 </section>
 
-<section id="juego">
-    <h2>Juego: Ahorcado CR7</h2>
-    <p id="palabra"></p>
-    <input type="text" id="letra" maxlength="1" placeholder="Letra">
-    <button onclick="probarLetra()">Probar</button>
-    <p id="intentos"></p>
-    <p id="mensaje"></p>
+<!-- IMAGEN LOCAL -->
+<section>
+    <h2>Cristiano Ronaldo 2008</h2>
+    <img src="cr7_2008.jpg" 
+         alt="Cristiano Ronaldo 2008"
+         style="width:100%; max-width:300px; display:block; margin:auto; border-radius:10px;">
 </section>
 
-<footer>
-    © 2026 - Web dedicada a Cristiano Ronaldo
-</footer>
+<section id="Palmarés">
+    <h2>Estadio: El Molinón - Enrique Castro "Quini"</h2>
+    <p>
+5 Champions League  
+7 Ligas  
+5 Balones de Oro  
+Máximo goleador histórico de la Champions  
+    </p>
+</section>
 
-<script>
-let palabrasOriginales = ["madrid", "portugal", "juventus", "champions", "balon", "siu"];
-let palabrasDisponibles = [...palabrasOriginales];
+<section id="aficion">
+    <h2>Afición</h2>
+    <p>
+Es una de las personas más reconocidas del mundo y la más seguida en Instagram.
+    </p>
+</section>
 
-let palabraSecreta;
-let palabraMostrada;
-let intentos;
+<!-- JUEGO AHORCADO -->
+<section id="juego">
+    <h2>Juego: El Ahorcado de CR7</h2>
+    <p id="palabra"></p>
+    <p>Letras usadas: <span id="usadas"></span></p>
+    <input type="text" id="letra" maxlength="1">
+    <button onclick="probarLetra()">Probar letra</button>
+    <p id="estado"></p>
+</section>
 
-function nuevaPalabra() {
-    if (palabrasDisponibles.length === 0) {
-        palabrasDisponibles = [...palabrasOriginales];
-    }
+<section id="contacto">
+    <h2>Contacto</h2>
+    <p>Puedes visitarlo web oficial del club para más información: 
+       <strong>www.realsporting.com</strong></p>
+</section>
 
-    let indice = Math.floor(Math.random() * palabrasDisponibles.length);
-    palabraSecreta = palabrasDisponibles[indice];
-    palabrasDisponibles.splice(indice, 1);
-
-    palabraMostrada = "_".repeat(palabraSecreta.length);
-    intentos = 6;
-
-    document.getElementById("mensaje").textContent = "";
-    actualizarPantalla();
-}
-
-function actualizarPantalla() {
-    document.getElementById("palabra").textContent = palabraMostrada.split("").join(" ");
-    document.getElementById("intentos").textContent = "Intentos restantes: " + intentos;
-}
-
-function probarLetra() {
-    let letra = document.getElementById("letra").value.toLowerCase();
-    document.getElementById("letra").value = "";
-
-    if (!letra) return;
-
-    let nueva = "";
-
-    for (let i = 0; i < palabraSecreta.length; i++) {
-        if (palabraSecreta[i] === letra) {
-            nueva += letra;
-        } else {
-            nueva += palabraMostrada[i];
-        }
-    }
-
-    if (nueva === palabraMostrada) {
-        intentos--;
-    }
-
-    palabraMostrada = nueva;
-    actualizarPantalla();
-
-    if (!palabraMostrada.includes("_")) {
-        document.getElementById("mensaje").textContent = "¡Ganaste como CR7! ⚽";
-        setTimeout(nuevaPalabra, 2000);
-    }
-
-    if (intentos === 0) {
-        document.getElementById("mensaje").textContent = "Perdiste. La palabra era: " + palabraSecreta;
-        setTimeout(nuevaPalabra, 2000);
-    }
-}
-
-nuevaPalabra();
-</script>
-
-<!-- TAWK -->
+<!-- CHATBOT REAL -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -224,6 +136,65 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
+</script>
+
+<footer>
+    © 2026 - Web dedicada al Real Sporting de Gijón
+</footer>
+
+<script>
+// AHORCADO
+const palabras = [
+    "cristiano",
+    "ronaldo",
+    "portugal",
+    "champions",
+    "balon",
+    "siuuu",
+    "madrid",
+    "manchester",
+    "juventus"
+];
+
+let palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
+let letrasAdivinadas = [];
+let letrasUsadas = [];
+
+function mostrarPalabra() {
+    let texto = "";
+    for (let letra of palabraSecreta) {
+        if (letrasAdivinadas.includes(letra)) {
+            texto += letra + " ";
+        } else {
+            texto += "_ ";
+        }
+    }
+    document.getElementById("palabra").textContent = texto;
+}
+
+function probarLetra() {
+    let input = document.getElementById("letra");
+    let letra = input.value.toLowerCase();
+    input.value = "";
+
+    if (letrasUsadas.includes(letra)) return;
+
+    letrasUsadas.push(letra);
+    document.getElementById("usadas").textContent = letrasUsadas.join(", ");
+
+    if (palabraSecreta.includes(letra)) {
+        letrasAdivinadas.push(letra);
+    }
+
+    mostrarPalabra();
+
+    if (!document.getElementById("palabra").textContent.includes("_")) {
+        document.getElementById("estado").textContent =
+            "¡HAS GANADO! La palabra era: " + palabraSecreta.toUpperCase();
+    }
+}
+
+mostrarPalabra();
 </script>
 
 </body>
