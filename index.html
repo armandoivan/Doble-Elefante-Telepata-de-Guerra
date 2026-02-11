@@ -21,6 +21,40 @@ header {
     text-align: center;
 }
 
+/* HERO PORTADA */
+.hero {
+    height: 80vh;
+    background: url("descarga (1).jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-text {
+    position: relative;
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-text h2 {
+    font-size: 60px;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 28px;
+    margin-top: 10px;
+}
+
 nav {
     background: #006600;
     padding: 15px;
@@ -40,9 +74,9 @@ nav a:hover {
 
 section {
     max-width: 900px;
-    margin: 30px auto;
+    margin: 40px auto;
     background: white;
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
     border-left: 10px solid #006600;
 }
@@ -79,9 +113,16 @@ button {
     <p>Máximo goleador de la historia del fútbol</p>
 </header>
 
+<!-- HERO PORTADA -->
+<section class="hero">
+    <div class="hero-text">
+        <h2>5 Champions League</h2>
+        <p>El Rey de Europa</p>
+    </div>
+</section>
+
 <nav>
     <a href="#historia">Historia</a>
-    <a href="#imagen">Imagen</a>
     <a href="#juego">Ahorcado</a>
 </nav>
 
@@ -89,15 +130,8 @@ button {
     <h2>Historia</h2>
     <p>
         Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
-        Es uno de los mejores futbolistas de todos los tiempos.
+        Es uno de los mejores futbolistas de todos los tiempos y el máximo goleador histórico.
     </p>
-</section>
-
-<section id="imagen">
-    <h2>Cristiano Ronaldo con la Champions</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Cristiano_Ronaldo_2018.jpg" 
-         alt="Cristiano Ronaldo Champions"
-         style="width:100%; max-width:400px; display:block; margin:auto; border-radius:10px;">
 </section>
 
 <section id="juego">
@@ -133,6 +167,7 @@ function nuevaPalabra() {
     palabraMostrada = "_".repeat(palabraSecreta.length);
     intentos = 6;
 
+    document.getElementById("mensaje").textContent = "";
     actualizarPantalla();
 }
 
@@ -178,7 +213,7 @@ function probarLetra() {
 nuevaPalabra();
 </script>
 
-<!-- TAWK (EDITAR DESDE SU PANEL) -->
+<!-- TAWK -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -193,6 +228,3 @@ s0.parentNode.insertBefore(s1,s0);
 
 </body>
 </html>
-
-
-
