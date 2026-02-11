@@ -1,84 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CR7</title>
-    <meta name="description" content="Web dedicada a Cristiano Ronaldo">
-    
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CR7</title>
 
-        header {
-            background: #c8102e;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    color: #222;
+}
 
-        section {
-            max-width: 900px;
-            margin: 30px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 10px solid #006600;
-        }
+header {
+    background: #c8102e;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #006600;
-            color: #eee;
-            margin-top: 40px;
-        }
+nav {
+    background: #006600;
+    padding: 15px;
+    text-align: center;
+}
 
-        #palabra {
-            font-size: 30px;
-            letter-spacing: 10px;
-        }
-    </style>
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #c8102e;
+}
+
+section {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 10px solid #006600;
+}
+
+h2 {
+    color: #c8102e;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #006600;
+    color: white;
+    margin-top: 40px;
+}
+
+#palabra {
+    font-size: 28px;
+    letter-spacing: 10px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 8px 15px;
+    margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Cristiano Ronaldo</h1>
-    <p>El mejor jugador de la historia</p>
+    <h1>CRISTIANO RONALDO</h1>
+    <p>Máximo goleador de la historia del fútbol</p>
 </header>
 
-<section>
-    <h2>Cristiano Ronaldo 2008</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2008.jpg"
-         alt="Cristiano Ronaldo 2008"
-         style="max-width:300px; display:block; margin:auto; border-radius:10px;">
-</section>
+<nav>
+    <a href="#historia">Historia</a>
+    <a href="#imagen">Imagen</a>
+    <a href="#juego">Ahorcado</a>
+</nav>
 
-<section>
+<section id="historia">
     <h2>Historia</h2>
     <p>
-        Cristiano Ronaldo dos Santos Aveiro nació en 1985 en Madeira.
-        Ha ganado 5 Balones de Oro y es el máximo goleador de la historia.
+        Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
+        Es uno de los mejores futbolistas de todos los tiempos.
     </p>
 </section>
 
-<section>
-    <h2>Juego: El Ahorcado CR7</h2>
+<section id="imagen">
+    <h2>Cristiano Ronaldo con la Champions</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Cristiano_Ronaldo_2018.jpg" 
+         alt="Cristiano Ronaldo Champions"
+         style="width:100%; max-width:400px; display:block; margin:auto; border-radius:10px;">
+</section>
+
+<section id="juego">
+    <h2>Juego: Ahorcado CR7</h2>
     <p id="palabra"></p>
-    <input type="text" id="letra" maxlength="1">
-    <button onclick="probarLetra()">Probar letra</button>
+    <input type="text" id="letra" maxlength="1" placeholder="Letra">
+    <button onclick="probarLetra()">Probar</button>
     <p id="intentos"></p>
-    <p id="mensajeJuego"></p>
+    <p id="mensaje"></p>
 </section>
 
 <footer>
     © 2026 - Web dedicada a Cristiano Ronaldo
 </footer>
+
+<script>
+let palabrasOriginales = ["madrid", "portugal", "juventus", "champions", "balon", "siu"];
+let palabrasDisponibles = [...palabrasOriginales];
+
+let palabraSecreta;
+let palabraMostrada;
+let intentos;
+
+function nuevaPalabra() {
+    if (palabrasDisponibles.length === 0) {
+        palabrasDisponibles = [...palabrasOriginales];
+    }
+
+    let indice = Math.floor(Math.random() * palabrasDisponibles.length);
+    palabraSecreta = palabrasDisponibles[indice];
+    palabrasDisponibles.splice(indice, 1);
+
+    palabraMostrada = "_".repeat(palabraSecreta.length);
+    intentos = 6;
+
+    actualizarPantalla();
+}
+
+function actualizarPantalla() {
+    document.getElementById("palabra").textContent = palabraMostrada.split("").join(" ");
+    document.getElementById("intentos").textContent = "Intentos restantes: " + intentos;
+}
+
+function probarLetra() {
+    let letra = document.getElementById("letra").value.toLowerCase();
+    document.getElementById("letra").value = "";
+
+    if (!letra) return;
+
+    let nueva = "";
+
+    for (let i = 0; i < palabraSecreta.length; i++) {
+        if (palabraSecreta[i] === letra) {
+            nueva += letra;
+        } else {
+            nueva += palabraMostrada[i];
+        }
+    }
+
+    if (nueva === palabraMostrada) {
+        intentos--;
+    }
+
+    palabraMostrada = nueva;
+    actualizarPantalla();
+
+    if (!palabraMostrada.includes("_")) {
+        document.getElementById("mensaje").textContent = "¡Ganaste como CR7! ⚽";
+        setTimeout(nuevaPalabra, 2000);
+    }
+
+    if (intentos === 0) {
+        document.getElementById("mensaje").textContent = "Perdiste. La palabra era: " + palabraSecreta;
+        setTimeout(nuevaPalabra, 2000);
+    }
+}
+
+nuevaPalabra();
+</script>
 
 <!-- TAWK (EDITAR DESDE SU PANEL) -->
 <script type="text/javascript">
@@ -93,51 +191,8 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 
-<script>
-/* ===== JUEGO AHORCADO ===== */
-let palabraSecreta = "RONALDO";
-let letrasAdivinadas = [];
-let intentos = 6;
-
-function mostrarPalabra() {
-    let display = "";
-    for (let letra of palabraSecreta) {
-        if (letrasAdivinadas.includes(letra)) {
-            display += letra + " ";
-        } else {
-            display += "_ ";
-        }
-    }
-    document.getElementById("palabra").textContent = display;
-}
-
-function probarLetra() {
-    let letra = document.getElementById("letra").value.toUpperCase();
-    document.getElementById("letra").value = "";
-
-    if (!palabraSecreta.includes(letra)) {
-        intentos--;
-    } else if (!letrasAdivinadas.includes(letra)) {
-        letrasAdivinadas.push(letra);
-    }
-
-    document.getElementById("intentos").textContent = "Intentos: " + intentos;
-
-    if (intentos <= 0) {
-        document.getElementById("mensajeJuego").textContent = "Has perdido 😢 La palabra era RONALDO";
-    } else if (!document.getElementById("palabra").textContent.includes("_")) {
-        document.getElementById("mensajeJuego").textContent = "¡Has ganado! SIIUU 🐐";
-    }
-
-    mostrarPalabra();
-}
-
-mostrarPalabra();
-</script>
-
 </body>
 </html>
-
 
 
 
