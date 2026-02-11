@@ -4,136 +4,157 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CR7</title>
-    <meta name="zorvenquilatriax" content="Compra aquí el auténtico y único zorvenquilatriax">
-    
+
     <style>
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f2f2f2;
-    color: #222;
-    <section>
-    <h2>Cristiano Ronaldo 2008</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2008.jpg" 
-         alt="Cristiano Ronaldo 2008"
-         style="width:100%; max-width:300px; display:block; margin:auto; border-radius:10px;">
-</section>
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            color: #222;
+        }
 
-header {
-    background: #c8102e; /* Rojo Portugal */
-    color: white;
-    padding: 30px;
-    text-align: center;
-}
+        header {
+            background: #c8102e; /* Rojo Portugal */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
 
-nav {
-    background: #006600; /* Verde Portugal */
-    padding: 15px;
-    text-align: center;
-}
+        nav {
+            background: #006600; /* Verde Portugal */
+            padding: 15px;
+            text-align: center;
+        }
 
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-nav a:hover {
-    color: #c8102e;
-}
+        nav a:hover {
+            color: #c8102e;
+        }
 
-section {
-    max-width: 900px;
-    margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 10px solid #006600;
-}
+        section {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 10px solid #006600;
+        }
 
-h2 {
-    color: #c8102e;
-}
+        h2 {
+            color: #c8102e;
+        }
 
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #006600;
-    color: white;
-    margin-top: 40px;
-}
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #006600;
+            color: white;
+            margin-top: 40px;
+        }
 
-
+        #chat {
+            border:1px solid #ccc;
+            padding:10px;
+            height:200px;
+            overflow:auto;
+            margin-bottom:10px;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>CRISTIANO RONALDO</h1>
-        <p>Máximo goleador de la historia del fútbol</p>
-    </header>
+<header>
+    <h1>CRISTIANO RONALDO</h1>
+    <p>Máximo goleador de la historia del fútbol</p>
+</header>
 
-    <nav>
-        #historiaHistoria</a>
-        #golgol</a>
-        #romperecords</a>
-        #portugalportugal</a>
-    </nav>
+<nav>
+    <a href="#historia">Historia</a>
+    <a href="#imagen">Imagen</a>
+    <a href="#juego">Juego</a>
+    <a href="#chatbot">Chatbot</a>
+</nav>
 
-    <section id="historia">
-        <h2>Historia</h2>
-        <p>
-           Cristiano Ronaldo dos Santos Aveiro es uno de los futbolistas más importantes y reconocidos de la historia del fútbol.
+<section id="historia">
+    <h2>Historia</h2>
+    <p>
+        Cristiano Ronaldo dos Santos Aveiro nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal).
+        Es uno de los mejores futbolistas de todos los tiempos.
+    </p>
+</section>
 
-Nació el 5 de febrero de 1985 en Funchal, Madeira (Portugal). Juega como delantero y destaca por su potencia física, velocidad, salto impresionante, disparo con ambas piernas y una mentalidad extremadamente competitiva.
-        </p>
-    </section>
+<section id="imagen">
+    <h2>Cristiano Ronaldo 2008</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2008.jpg" 
+         alt="Cristiano Ronaldo 2008"
+         style="width:100%; max-width:300px; display:block; margin:auto; border-radius:10px;">
+</section>
 
-    <section id="Palmarés">
-        <h2>Estadio: El Molinón - Enrique Castro "Quini"</h2>
-        <p>
-Títulos colectivos
-5 Champions League
-7 Ligas (Inglaterra, España, Italia)
-4 Mundiales de Clubes
-3 Premier League
-2 Ligas españolas
-2 Serie A
-1 Eurocopa (2016)
-1 Nations League (2019)
-Premios individuales
-5 Balones de Oro
-4 Botas de Oro
-3 The Best FIFA
-Máximo goleador histórico de la Champions
-Máximo goleador histórico de selecciones
-        </p>
-    </section>
+<section id="juego">
+    <h2>Juego: Adivina el número</h2>
+    <p>Cristiano piensa un número del 1 al 10</p>
+    <input type="number" id="numero" min="1" max="10">
+    <button onclick="jugar()">Probar</button>
+    <p id="resultado"></p>
+</section>
 
-    <section id="aficion">
-        <h2>Afición</h2>
-        <p>
-           es una de las personas mas reconocidas del mundo la más seguida de todas en instagram     </p>
-    </section>
+<section id="chatbot">
+    <h2>Chat con CristianoBot</h2>
+    <div id="chat"></div>
+    <input type="text" id="mensaje" placeholder="Escribe algo...">
+    <button onclick="responder()">Enviar</button>
+</section>
 
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Puedes visitarlo web oficial del club para más información: <strong>www.realsporting.com</strong></p>
-    </section>
+<footer>
+    © 2026 - Web dedicada a Cristiano Ronaldo
+</footer>
 
-    <footer>
-        © 2026 - Web dedicada al Real Sporting de Gijón
-    </footer>
+<script>
+    // Juego
+    let secreto = Math.floor(Math.random() * 10) + 1;
+
+    function jugar() {
+        let n = document.getElementById("numero").value;
+        let res = document.getElementById("resultado");
+
+        if (n == secreto) {
+            res.textContent = "¡GOOOOL! Has acertado como CR7 🐐";
+        } else {
+            res.textContent = "Fallaste... el número era " + secreto;
+        }
+    }
+
+    // Chatbot
+    function responder() {
+        let input = document.getElementById("mensaje");
+        let chat = document.getElementById("chat");
+        let texto = input.value.toLowerCase();
+
+        chat.innerHTML += "<p><strong>Tú:</strong> " + input.value + "</p>";
+
+        let respuesta = "Soy el mejor jugador del mundo 😎";
+
+        if (texto.includes("hola")) respuesta = "Hola, soy Cristiano Ronaldo.";
+        if (texto.includes("balon")) respuesta = "He ganado 5 Balones de Oro.";
+        if (texto.includes("edad")) respuesta = "Nací en 1985.";
+        if (texto.includes("siu")) respuesta = "¡¡SIIIIUUUU!!";
+        if (texto.includes("champions")) respuesta = "He ganado 5 Champions League.";
+
+        chat.innerHTML += "<p><strong>CristianoBot:</strong> " + respuesta + "</p>";
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+    }
+</script>
 
 </body>
 </html>
-
-
-
 
 
